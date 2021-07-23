@@ -8,13 +8,6 @@
     android:layout_margin="16dp"
     tools:context=".TareasActivity">
 
-    <TextView
-        android:gravity="center_horizontal"
-        android:textSize="30sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Lista de tareas"/>
-
     <Button
         android:id="@+id/btnCrearTarea"
         android:layout_width="match_parent"
@@ -28,6 +21,19 @@
         android:layout_height="wrap_content"
         android:text="Cerrar sesion"
         android:onClick="onclik"/>
+
+    <TextView
+        android:gravity="center_horizontal"
+        android:textSize="30sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lista de tareas"/>
+    <ListView
+        android:background="@color/purple_500"
+        android:id="@+id/listView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:dividerHeight="15dp"/>
 
 
 </LinearLayout>

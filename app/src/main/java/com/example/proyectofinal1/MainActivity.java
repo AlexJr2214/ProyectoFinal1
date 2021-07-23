@@ -83,12 +83,12 @@ public class MainActivity extends AppCompatActivity {
                                 id = object.getInt("id");
                                 usuario = object.getString("nombre_usuario");
 
-                                Toast.makeText(MainActivity.this, "id: " + id + " usuario: " + usuario, Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(MainActivity.this, "id: " + id + " usuario: " + usuario, Toast.LENGTH_SHORT).show();
                             }
 
                             Intent intent = new Intent(getApplicationContext(), TareasActivity.class);
-                            //intent.putExtra("nombre_usuario", usuario);
-                            //intent.putExtra("id", id);
+                            intent.putExtra("nombre_usuario", usuario);
+                            intent.putExtra("id", id);
                             startActivity(intent);
                             finish();
 

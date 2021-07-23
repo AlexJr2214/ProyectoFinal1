@@ -1,6 +1,8 @@
 package com.example.proyectofinal1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.Data;
+import androidx.work.WorkManager;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -8,6 +10,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -16,25 +19,48 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.proyectofinal1.Clases.Workmanagernoti;
+import com.example.proyectofinal1.Modelos.Tarea;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 public class CrearTareaActivity extends AppCompatActivity {
+    Intent intent;
+    int id;
+    String nombre_usuario;
+
+    List<Tarea> tareaList = new ArrayList<>();
+
 
     TextView tvVerHora, tvVerFecha;
     EditText etNombreTarea, etDescripcionTarea;
-    Button crearTarea;
+
     int t1Hour, t1Minute;
-    String hora, fecha, nombre, descripcion;
+    String hora, fecha, nombre, descripcion; //Variables que guardan los campos
     String capturaFecha; //Variable que guardara la fecha que seleccionemos en nuestro CalendarDialog
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_tarea);
 
+        this.RecibirDatos();
         this.InicializarControles();
     }
 
@@ -43,10 +69,13 @@ public class CrearTareaActivity extends AppCompatActivity {
         tvVerHora = findViewById(R.id.tvMostrarHora);
         etNombreTarea = findViewById(R.id.etNombreTarea);
         etDescripcionTarea = findViewById(R.id.etDescripcionTarea);
-        crearTarea = findViewById(R.id.btnCrearTarea);
+    }
 
-        //crearTarea.setOnClickListener(this::onclik);
-
+    private void RecibirDatos(){
+        intent = getIntent();
+        nombre_usuario = intent.getStringExtra("nombre_usuario");
+        id = intent.getIntExtra("id", 0);
+        Toast.makeText(this, "Soy: " + nombre_usuario, Toast.LENGTH_SHORT).show();
     }
 
     public void onclik(View view) {
@@ -61,17 +90,58 @@ public class CrearTareaActivity extends AppCompatActivity {
 
             case R.id.btnCancelar:
                 Intent intent = new Intent(this, TareasActivity.class);
+                intent.putExtra("nombre_usuario", nombre_usuario);
+                intent.putExtra("id", id);
                 startActivity(intent);
                 finish();
                 break;
 
             case R.id.btnGuardarTarea:
                 if(VerificarCampos()){
-                    Toast.makeText(this, "Tarea Guardada", Toast.LENGTH_SHORT).show();
+                    RegistrarTarea();
                 }
                 break;
         }
     }
+
+    private void LimpiarCampos() {
+        tvVerHora.setText("");
+        tvVerFecha.setText("");
+        etNombreTarea.setText("");
+        etDescripcionTarea.setText("");
+    }
+
+    private void RegistrarTarea() {
+        String ip = getString(R.string.ip);
+        String URL_REGISTRO_TAREA = "http://"+ip+"/ApisPHP/ApiD6Semestral/registrar_tarea.php";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGISTRO_TAREA, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                int x=0;
+                LimpiarCampos();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                int x=0;
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("id_usuario", String.valueOf(id));
+                params.put("nombre_tarea", nombre);
+                params.put("descripcion_tarea", descripcion);
+                params.put("fecha_tarea", fecha);
+                params.put("hora_tarea", hora);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
 
     private void ObtenerHora(){
         TimePickerDialog timePickerDialog = new TimePickerDialog(
@@ -93,7 +163,7 @@ public class CrearTareaActivity extends AppCompatActivity {
                             SimpleDateFormat f12Hours = new SimpleDateFormat(
                                     "hh:mm aa"
                             );
-                            tvVerHora.setText(f12Hours.format(date));
+                            tvVerHora.setText(f24Hours.format(date));
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
