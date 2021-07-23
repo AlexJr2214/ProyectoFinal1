@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="16dp"
+    tools:context=".TareasActivity">
+
+    <TextView
+        android:gravity="center_horizontal"
+        android:textSize="30sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lista de tareas"/>
+
+    <Button
+        android:id="@+id/btnCrearTarea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agregar tarea"
+        android:onClick="onclik"/>
+
+    <Button
+        android:id="@+id/btnCerrarSesion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cerrar sesion"
+        android:onClick="onclik"/>
+
+
+</LinearLayout>
