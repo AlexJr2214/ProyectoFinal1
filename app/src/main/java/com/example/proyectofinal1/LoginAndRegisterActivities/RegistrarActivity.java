@@ -56,6 +56,8 @@ public class RegistrarActivity extends AppCompatActivity {
             return false;
         }else{
             if(pass.equals(comprobar)){
+                nombre = nombre.toLowerCase();
+                Toast.makeText(this, "nombre: " + nombre, Toast.LENGTH_SHORT).show();
                 return true;
             }else{
                 Toast.makeText(this, "Pass no coinciden", Toast.LENGTH_SHORT).show();

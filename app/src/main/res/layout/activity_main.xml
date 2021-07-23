@@ -16,11 +16,13 @@
         android:text="Login"/>
 
     <EditText
+        android:id="@+id/etNombreUsuarioLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Inserte correo: "/>
 
     <EditText
+        android:id="@+id/etPasswordLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Inserte password: "/>
