@@ -33,8 +33,8 @@ public class TareasActivity extends AppCompatActivity {
 
     ListView listView;
 
-    ArrayList<Tarea> tareaList;
-    ArrayList<String> listaInformacion;
+    List<Tarea> tareaList;
+    List<String> listaInformacion;
 
     Intent intent;
 

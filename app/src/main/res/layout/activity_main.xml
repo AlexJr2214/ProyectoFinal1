@@ -5,45 +5,72 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="16dp"
     tools:context=".MainActivity">
 
     <TextView
+        android:gravity="center"
+        android:padding="6dp"
+        android:textColor="@color/white"
+        android:background="@color/teal_700"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"/>
+        android:text="Inicio de sesion"/>
 
     <EditText
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:layout_width="510dp"
+        android:textSize="20sp"
         android:id="@+id/etNombreUsuarioLogin"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Inserte correo: "/>
 
     <EditText
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:layout_width="510dp"
         android:id="@+id/etPasswordLogin"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Inserte password: "/>
 
-    <Button
-        android:id="@+id/btnLogear"
+    <LinearLayout
+        android:layout_marginTop="-18dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Logearse"
-        android:onClick="onclik"/>
+        android:layout_height="89dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <Button
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:backgroundTint="@color/teal_700"
+            android:id="@+id/btnLogear"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="Logearse"
+            android:onClick="onclik"/>
+
+        <Button
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:backgroundTint="@color/teal_700"
+            android:id="@+id/btnRegistrar"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Registrarse"
+            android:onClick="onclik"/>
+    </LinearLayout>
 
     <Button
-        android:id="@+id/btnRegistrar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Registrarse"
-        android:onClick="onclik"/>
-
-    <Button
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:layout_marginTop="-25dp"
+        android:textSize="15sp"
+        android:backgroundTint="@color/teal_700"
         android:id="@+id/btnContinuar"
-        android:layout_width="match_parent"
+        android:layout_width="510dp"
         android:layout_height="wrap_content"
         android:text="Continuar de todos modos"
         android:onClick="onclik"/>

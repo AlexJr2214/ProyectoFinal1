@@ -5,35 +5,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="16dp"
     tools:context=".TareasActivity">
 
-    <Button
-        android:id="@+id/btnCrearTarea"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Agregar tarea"
-        android:onClick="onclik"/>
-
-    <Button
-        android:id="@+id/btnCerrarSesion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cerrar sesion"
-        android:onClick="onclik"/>
-
     <TextView
+        android:padding="6dp"
+        android:textColor="@color/white"
+        android:background="@color/teal_700"
         android:gravity="center_horizontal"
+        android:layout_marginBottom="4dp"
         android:textSize="30sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Lista de tareas"/>
+
     <ListView
-        android:background="@color/purple_500"
         android:id="@+id/listView"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:dividerHeight="15dp"/>
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="@color/black"
+        android:backgroundTint="@color/teal_700"
+        android:divider="@color/white"
+        android:dividerHeight="4dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="89dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:id="@+id/btnCrearTarea"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/teal_700"
+            android:onClick="onclik"
+            android:text="Agregar tarea" />
+
+        <Button
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:backgroundTint="@color/teal_700"
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+
+            android:onClick="onclik"
+            android:text="Cerrar sesion" />
+    </LinearLayout>
 
 
 </LinearLayout>
