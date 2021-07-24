@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".CrearTareaActivity">
 
-
-
     <TextView
+        android:padding="6dp"
+        android:textColor="@color/white"
+        android:background="@color/teal_700"
         android:gravity="center_horizontal"
         android:textSize="30sp"
         android:layout_width="match_parent"
@@ -23,6 +23,9 @@
         android:layout_height="wrap_content">
 
         <Button
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:backgroundTint="@color/teal_700"
             android:layout_gravity="center_horizontal"
             android:text="Selecciona una fecha"
             android:id="@+id/btnSetearFecha"
@@ -43,6 +46,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
+            android:backgroundTint="@color/teal_700"
             android:text="Selecciona una hora"
             android:id="@+id/btnSetearHora"
             android:layout_width="200dp"
@@ -70,6 +74,7 @@
         android:hint="Descripcion de la tarea"/>
 
     <Button
+        android:backgroundTint="@color/teal_700"
         android:id="@+id/btnGuardarTarea"
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
@@ -77,6 +82,7 @@
         android:text="Guardar tarea"
         android:onClick="onclik"/>
     <Button
+        android:backgroundTint="@color/teal_700"
         android:id="@+id/btnCancelar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

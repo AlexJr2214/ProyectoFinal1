@@ -143,7 +143,7 @@ public class TareasActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Toast.makeText(TareasActivity.this, "posicion: " + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(TareasActivity.this, "posicion: " + tareaList.get(position).getDescripcion_tarea(), Toast.LENGTH_SHORT).show();
             }
         });
     }
